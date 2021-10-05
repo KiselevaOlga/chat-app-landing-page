@@ -3,12 +3,13 @@
 $font-stack: 'Rubik', sans-serif;
 $font-standart: 16px;
 $font-small: 12px;
+$font-xsmall: 10px;
 $font-weight-s: 400;
 $font-weight-m: 500;
 $font-weight-l: 700;
 $font-color-left: hsl(276, 55%, 52%); 
 $font-color-right: hsl(271, 15%, 43%);
-$font-subhead: hsl(276, 100%, 81%);
+$font-subhead: hsl(276, 100%, 90%);
 $font-placeholder: hsl(206, 6%, 79%);
 $font-main-head: hsl(271, 36%, 24%);
 $font-para: hsl(270, 7%, 64%);
@@ -18,20 +19,38 @@ $light-violet:hsl(264, 100%, 61%);
 
 $white: hsl(0, 0%, 100%);
 $background:hsl(270, 20%, 96%);
+$msg-background: #EDE7F3;
 $button-back: hsl(271, 36%, 24%);
 $button-outline: hsl(289, 100%, 72%);
 
 body{
     background: $background;
     box-sizing: border-box;
+    font-family: $font-stack;
 }
 
 main {
-    @media only screen and (min-width: 375px){
+    position: relative;
+    @media only screen and (min-width: 320px){
         display: block;
+        &::before{
+            content: "";
+            position: absolute;
+            margin-top: -50px;
+            margin-left: -10px;
+            z-index: -100;
+            background: $light-violet;
+            background-image: linear-gradient(50deg, $light-violet 30%, $light-magenta 100%);
+            border-bottom-right-radius: 50%;
+            height: 50vh;
+            width: 50vw;
+        } 
     }
     @media only screen and (min-width: 1440px){
         display: flex;
+        &::before{
+            width: 40vw;
+        }
     }
 }
 .phone{
@@ -41,6 +60,7 @@ main {
     width: 300px;
     position: relative;
     z-index: 5;
+    background: $background;
     &::before{
         content: '';
         background: $white;
@@ -62,26 +82,30 @@ main {
         border-top-right-radius: 23px;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
-        background-image: linear-gradient(50deg, $light-violet 0%, $light-magenta 75%);
-        padding: 10px 20px;
-        margin: 0;
-        &::before{
-            // content:"\A";
-            content: "003C";
-            border-style: solid;
-            border-width: 10px 15px 10px 0;
-            border-color: white;
-            position: absolute;
-            
+        background: $light-violet;
+        background-image: linear-gradient(50deg, $light-violet 30%, $light-magenta 100%);
+        padding: 20px 20px 5px 20px;
+        color: $font-subhead;
 
+        &::before{
+            content:"\276E";
+            position: absolute;
+            left: 2%;
+            font-weight: $font-weight-l;
+        }
+        &::after{
+            content:"\205D";
+            position: absolute;
+            right: 5%;
+            font-weight: $font-weight-l;
         }
         figure{
             align-self: center;
-            margin: 0;
+            margin: 5px 10px;
             .avatar-img{
                 border: 1px solid $white;
                 border-radius: 50%;
-                width: 35px;
+                width: 25px;
             }
         }
         .chat-name{
@@ -90,11 +114,77 @@ main {
                 margin: 0;
             }
             p:nth-child(2){
-                font-size: $font-small;
+                font-size: $font-xsmall;
                 margin: 0;
             }
         }
         
+    }
+    .phone-chat{
+        .chat-left{
+            max-width: 70%;
+            margin: 10px;
+            color: $font-color-left;
+            
+            p{
+                display: inline-block;
+                background: $msg-background;
+                border-radius: 20px 20px 20px 0;
+                padding: 10px;
+                font-size: $font-small;
+            }
+            .chat-option{
+                width: 90%;
+                background: $light-violet;
+                border-radius: 20px 20px 20px 0;
+                padding: 10px;
+                margin: 10px;
+                background-image: linear-gradient(50deg, $light-magenta 30%, $light-violet 100%);
+                color: $font-subhead;
+                
+                span:nth-of-type(1){
+                    font-size: $font-small;
+                }
+                span:nth-of-type(2){
+                    font-size: $font-standart;
+                    font-weight: $font-weight-l;
+                    float: right;
+                }
+            }
+        }
+        .chat-right{
+            max-width: 70%;
+            color: $font-color-right;
+            margin: 10px;
+            margin-left: auto;
+            p {
+                float: right;
+                background: $white;
+                border-radius: 20px 20px 0px 20px;
+                font-size: $font-small;
+                padding: 10px;
+                // box-shadow: rgba(66, 66, 83, 0.25) 0px 10px 27px -5px;
+                filter: drop-shadow(5px 10px 5px #7474754f);
+            }
+            .chat-images{
+                display: flex;
+                
+                figure{
+                    align-self: center;
+                    margin: 5px;
+                    .chat-img{
+                        width: 60px;
+                        border-radius: 20%;
+                    }
+
+                }
+            }
+        }
+        .chat-input{
+            border-radius: 30px;
+            margin: 10px;
+            padding: 10px;
+        }
     }
     
 }

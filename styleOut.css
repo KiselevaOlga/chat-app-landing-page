@@ -1,17 +1,37 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 body {
   background: #f5f3f7;
   box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
 }
 
-@media only screen and (min-width: 375px) {
+main {
+  position: relative;
+}
+@media only screen and (min-width: 320px) {
   main {
     display: block;
+  }
+  main::before {
+    content: "";
+    position: absolute;
+    margin-top: -50px;
+    margin-left: -10px;
+    z-index: -100;
+    background: #8838ff;
+    background-image: linear-gradient(50deg, #8838ff 30%, #e942ff 100%);
+    border-bottom-right-radius: 50%;
+    height: 50vh;
+    width: 50vw;
   }
 }
 @media only screen and (min-width: 1440px) {
   main {
     display: flex;
+  }
+  main::before {
+    width: 40vw;
   }
 }
 
@@ -22,6 +42,7 @@ body {
   width: 300px;
   position: relative;
   z-index: 5;
+  background: #f5f3f7;
 }
 .phone::before {
   content: "";
@@ -44,25 +65,31 @@ body {
   border-top-right-radius: 23px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background-image: linear-gradient(50deg, #8838ff 0%, #e942ff 75%);
-  padding: 10px 20px;
-  margin: 0;
+  background: #8838ff;
+  background-image: linear-gradient(50deg, #8838ff 30%, #e942ff 100%);
+  padding: 20px 20px 5px 20px;
+  color: #ebccff;
 }
 .phone .phone-header::before {
-  content: "003C";
-  border-style: solid;
-  border-width: 10px 15px 10px 0;
-  border-color: white;
+  content: "❮";
   position: absolute;
+  left: 2%;
+  font-weight: 700;
+}
+.phone .phone-header::after {
+  content: "⁝";
+  position: absolute;
+  right: 5%;
+  font-weight: 700;
 }
 .phone .phone-header figure {
   align-self: center;
-  margin: 0;
+  margin: 5px 10px;
 }
 .phone .phone-header figure .avatar-img {
   border: 1px solid white;
   border-radius: 50%;
-  width: 35px;
+  width: 25px;
 }
 .phone .phone-header .chat-name {
   align-self: center;
@@ -71,8 +98,67 @@ body {
   margin: 0;
 }
 .phone .phone-header .chat-name p:nth-child(2) {
-  font-size: 12px;
+  font-size: 10px;
   margin: 0;
+}
+.phone .phone-chat .chat-left {
+  max-width: 70%;
+  margin: 10px;
+  color: #9241c8;
+}
+.phone .phone-chat .chat-left p {
+  display: inline-block;
+  background: #EDE7F3;
+  border-radius: 20px 20px 20px 0;
+  padding: 10px;
+  font-size: 12px;
+}
+.phone .phone-chat .chat-left .chat-option {
+  width: 90%;
+  background: #8838ff;
+  border-radius: 20px 20px 20px 0;
+  padding: 10px;
+  margin: 10px;
+  background-image: linear-gradient(50deg, #e942ff 30%, #8838ff 100%);
+  color: #ebccff;
+}
+.phone .phone-chat .chat-left .chat-option span:nth-of-type(1) {
+  font-size: 12px;
+}
+.phone .phone-chat .chat-left .chat-option span:nth-of-type(2) {
+  font-size: 16px;
+  font-weight: 700;
+  float: right;
+}
+.phone .phone-chat .chat-right {
+  max-width: 70%;
+  color: #6e5d7e;
+  margin: 10px;
+  margin-left: auto;
+}
+.phone .phone-chat .chat-right p {
+  float: right;
+  background: white;
+  border-radius: 20px 20px 0px 20px;
+  font-size: 12px;
+  padding: 10px;
+  filter: drop-shadow(5px 10px 5px #7474754f);
+}
+.phone .phone-chat .chat-right .chat-images {
+  display: flex;
+}
+.phone .phone-chat .chat-right .chat-images figure {
+  align-self: center;
+  margin: 5px;
+}
+.phone .phone-chat .chat-right .chat-images figure .chat-img {
+  width: 60px;
+  border-radius: 20%;
+}
+.phone .phone-chat .chat-input {
+  border-radius: 30px;
+  margin: 10px;
+  padding: 10px;
 }
 
 /*# sourceMappingURL=styleOut.css.map */
