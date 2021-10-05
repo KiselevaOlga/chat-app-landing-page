@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+$font-stack: 'Rubik', sans-serif;
+$font-standart: 16px;
+$font-small: 12px;
+$font-weight-s: 400;
+$font-weight-m: 500;
+$font-weight-l: 700;
+$font-color-left: hsl(276, 55%, 52%); 
+$font-color-right: hsl(271, 15%, 43%);
+$font-subhead: hsl(276, 100%, 81%);
+$font-placeholder: hsl(206, 6%, 79%);
+$font-main-head: hsl(271, 36%, 24%);
+$font-para: hsl(270, 7%, 64%);
+
+$light-magenta: hsl(293, 100%, 63%);
+$light-violet:hsl(264, 100%, 61%);
+
+$white: hsl(0, 0%, 100%);
+$background:hsl(270, 20%, 96%);
+$button-back: hsl(271, 36%, 24%);
+$button-outline: hsl(289, 100%, 72%);
+
+body{
+    background: $background;
+    box-sizing: border-box;
+}
+
+main {
+    @media only screen and (min-width: 375px){
+        display: block;
+    }
+    @media only screen and (min-width: 1440px){
+        display: flex;
+    }
+}
+.phone{
+    border: 8px solid $white;
+    border-radius: 30px;
+    margin: 10% auto;
+    width: 300px;
+    position: relative;
+    z-index: 5;
+    &::before{
+        content: '';
+        background: $white;
+        position: absolute;
+        z-index: 5;
+        width: 150px;
+        height: 30px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        left: calc(50% - 75px);
+        top: -7px;
+    }
+    .phone-header{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        border-top-left-radius: 23px;
+        border-top-right-radius: 23px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-image: linear-gradient(50deg, $light-violet 0%, $light-magenta 75%);
+        padding: 10px 20px;
+        margin: 0;
+        &::before{
+            // content:"\A";
+            content: "003C";
+            border-style: solid;
+            border-width: 10px 15px 10px 0;
+            border-color: white;
+            position: absolute;
+            
+
+        }
+        figure{
+            align-self: center;
+            margin: 0;
+            .avatar-img{
+                border: 1px solid $white;
+                border-radius: 50%;
+                width: 35px;
+            }
+        }
+        .chat-name{
+            align-self: center;
+            p:nth-child(1){
+                margin: 0;
+            }
+            p:nth-child(2){
+                font-size: $font-small;
+                margin: 0;
+            }
+        }
+        
+    }
+    
+}

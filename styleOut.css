@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+body {
+  background: #f5f3f7;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 375px) {
+  main {
+    display: block;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  main {
+    display: flex;
+  }
+}
+
+.phone {
+  border: 8px solid white;
+  border-radius: 30px;
+  margin: 10% auto;
+  width: 300px;
+  position: relative;
+  z-index: 5;
+}
+.phone::before {
+  content: "";
+  background: white;
+  position: absolute;
+  z-index: 5;
+  width: 150px;
+  height: 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  left: calc(50% - 75px);
+  top: -7px;
+}
+.phone .phone-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  border-top-left-radius: 23px;
+  border-top-right-radius: 23px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-image: linear-gradient(50deg, #8838ff 0%, #e942ff 75%);
+  padding: 10px 20px;
+  margin: 0;
+}
+.phone .phone-header::before {
+  content: "003C";
+  border-style: solid;
+  border-width: 10px 15px 10px 0;
+  border-color: white;
+  position: absolute;
+}
+.phone .phone-header figure {
+  align-self: center;
+  margin: 0;
+}
+.phone .phone-header figure .avatar-img {
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 35px;
+}
+.phone .phone-header .chat-name {
+  align-self: center;
+}
+.phone .phone-header .chat-name p:nth-child(1) {
+  margin: 0;
+}
+.phone .phone-header .chat-name p:nth-child(2) {
+  font-size: 12px;
+  margin: 0;
+}
+
+/*# sourceMappingURL=styleOut.css.map */
