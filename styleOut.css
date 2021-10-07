@@ -219,7 +219,7 @@ body::before {
 .side-text h3 {
   color: #3e2753;
   font-size: 30px;
-  animation: underline_anim 1s 10s forwards;
+  animation: underline_anim 1s 11s forwards;
 }
 .side-text p {
   color: #a39daa;
