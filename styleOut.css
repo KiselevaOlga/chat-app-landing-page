@@ -1,48 +1,72 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   background: #f5f3f7;
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
-}
-
-main {
   position: relative;
 }
+body::before {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  background: #8838ff;
+  background-image: linear-gradient(50deg, #8838ff 30%, #e942ff 100%);
+  border-radius: 0 0 560px 560px;
+  height: 100%;
+  width: 43%;
+}
+@media only screen and (min-width: 1440px) {
+  body::before {
+    right: 70%;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 1439px) {
+  body::before {
+    width: 84%;
+    top: -17%;
+    right: 50%;
+    height: 80%;
+  }
+}
+
 @media only screen and (min-width: 320px) {
   main {
     display: block;
-  }
-  main::before {
-    content: "";
-    position: absolute;
-    margin-top: -50px;
-    margin-left: -10px;
-    z-index: -100;
-    background: #8838ff;
-    background-image: linear-gradient(50deg, #8838ff 30%, #e942ff 100%);
-    border-bottom-right-radius: 50%;
-    height: 50vh;
-    width: 50vw;
   }
 }
 @media only screen and (min-width: 1440px) {
   main {
     display: flex;
   }
-  main::before {
-    width: 40vw;
-  }
 }
 
 .phone {
   border: 8px solid white;
   border-radius: 30px;
-  margin: 10% auto;
-  width: 300px;
   position: relative;
   z-index: 5;
   background: #f5f3f7;
+  overflow: hidden;
+  box-shadow: rgba(66, 66, 83, 0.25) 0px 10px 27px -5px;
+}
+@media only screen and (min-width: 320px) {
+  .phone {
+    margin: 10% auto;
+    width: 300px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .phone {
+    margin: 3% 0% 3% 25%;
+  }
 }
 .phone::before {
   content: "";
@@ -61,10 +85,7 @@ main {
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  border-top-left-radius: 23px;
-  border-top-right-radius: 23px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 23px 23px 10px 10px;
   background: #8838ff;
   background-image: linear-gradient(50deg, #8838ff 30%, #e942ff 100%);
   padding: 20px 20px 5px 20px;
@@ -103,7 +124,7 @@ main {
 }
 .phone .phone-chat .chat-left {
   max-width: 70%;
-  margin: 10px;
+  margin: 5px;
   color: #9241c8;
 }
 .phone .phone-chat .chat-left p {
@@ -112,6 +133,7 @@ main {
   border-radius: 20px 20px 20px 0;
   padding: 10px;
   font-size: 12px;
+  margin: 5px;
 }
 .phone .phone-chat .chat-left .chat-option {
   width: 90%;
@@ -142,6 +164,7 @@ main {
   border-radius: 20px 20px 0px 20px;
   font-size: 12px;
   padding: 10px;
+  margin: 5px;
   filter: drop-shadow(5px 10px 5px #7474754f);
 }
 .phone .phone-chat .chat-right .chat-images {
@@ -156,9 +179,110 @@ main {
   border-radius: 20%;
 }
 .phone .phone-chat .chat-input {
+  display: flex;
+  position: relative;
+}
+.phone .phone-chat .chat-input input {
   border-radius: 30px;
-  margin: 10px;
   padding: 10px;
+  width: 100%;
+  margin: 10px;
+  border: none;
+}
+.phone .phone-chat .chat-input input:focus {
+  outline: none;
+}
+.phone .phone-chat .chat-input .send-btn {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  top: calc(50% - 15px);
+  position: absolute;
+  right: 5%;
+  background: #3e2753;
+  border: none;
+}
+.phone .phone-chat .chat-input .send-btn::after {
+  content: "❯";
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  position: absolute;
+  top: calc(50% - 15px);
+  left: 10px;
+}
+
+.side-text {
+  align-self: center;
+  padding: 0% 7%;
+}
+.side-text h3 {
+  color: #3e2753;
+  font-size: 30px;
+  animation: underline_anim 1s 10s forwards;
+}
+.side-text p {
+  color: #a39daa;
+}
+@media only screen and (min-width: 320px) {
+  .side-text {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .side-text {
+    width: 45%;
+    text-align: left;
+  }
+}
+
+.loader {
+  font-size: 30px;
+  padding-left: 50px;
+}
+.loader span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #8838ff;
+  display: inline-block;
+  animation: loading 2s 5 forwards;
+}
+.loader span:nth-of-type(1) {
+  animation-delay: 400ms;
+}
+.loader span:nth-child(2) {
+  animation-delay: 900ms;
+}
+.loader span:nth-child(3) {
+  animation-delay: 1300ms;
+}
+
+@keyframes loading {
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: translateY(300%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes underline_anim {
+  100% {
+    text-decoration: underline;
+    text-decoration-color: #8838ff;
+    font-size: 40px;
+  }
 }
 
 /*# sourceMappingURL=styleOut.css.map */

@@ -10,7 +10,10 @@
 
   
   <style>
-    .attribution { font-size: 11px; text-align: center; }
+    .attribution { 
+      font-size: 11px; 
+      text-align: center;
+     }
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
@@ -28,12 +31,14 @@
       </header>
       <article class="phone-chat">
         <div class="chat-left">
-          <p>That sounds great. I’d be happy with that.</p>
+          <p style="animation: popup 2s forwards;animation-delay: 1s; opacity: 0">
+          That sounds great. I’d be happy with that.</p>
 
-          <p>Could you send over some pictures of your dog, please?</p>
+          <p style="animation: popup 2s forwards;animation-delay: 2s; opacity: 0">
+            Could you send over some pictures of your dog, please?</p>
         </div>
         <div class="chat-right">
-          <div class="chat-images">
+          <div class="chat-images"  style="animation: popup 2s forwards;animation-delay: 4s; opacity: 0">
             <figure>
               <img src="./images/dog-image-1.jpg" alt="dog 1" class="chat-img"/>
             </figure>
@@ -44,26 +49,37 @@
               <img src="./images/dog-image-3.jpg" alt="dog 3" class="chat-img"/>
             </figure>
           </div>
-          <p>Here are a few pictures. She’s a happy girl!</p>
+          <p  style="animation: popup 2s forwards;animation-delay: 5s; opacity: 0">
+            Here are a few pictures. She’s a happy girl!</p>
 
-          <p>Can you make it?</p>
+          <p style="animation: popup 2s forwards;animation-delay: 6s; opacity: 0">
+            Can you make it?</p>
 
         </div>
         <div class="chat-left">
-          <p>She looks so happy! The time we discussed works. How long shall I take her out for?</p>
-          <div class="chat-option">
+          <p  style="animation: popup 2s forwards;animation-delay: 8s; opacity: 0">
+            She looks so happy! The time we discussed works. How long shall I take her out for?</p>
+          <div class="chat-option"  style="animation: popup 2s forwards;animation-delay: 9s; opacity: 0">
             <input type="radio"/>
             <span>30 minute walk</span>
             <span>$29</span>
           </div>
-          <div class="chat-option">
+          <div class="chat-option"  style="animation: popup 2s forwards;animation-delay: 9s; opacity: 0">
             <input type="radio"/>
             <span>1 hour walk</span>
             <span>$49</span>
           </div>
         </div>
+        <div class="loader">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="chat-input">
+          <input type="text" placeholder="Type a message…"/> 
+          <button class="send-btn"></button>
+        </div>
         
-        <input type="text" placeholder="Type a message…" class="chat-input"/> 
         
 
       </article>

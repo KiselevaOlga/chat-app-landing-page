@@ -22,45 +22,63 @@ $background:hsl(270, 20%, 96%);
 $msg-background: #EDE7F3;
 $button-back: hsl(271, 36%, 24%);
 $button-outline: hsl(289, 100%, 72%);
-
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 body{
+    margin: 0;
     background: $background;
     box-sizing: border-box;
     font-family: $font-stack;
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        z-index: -100;
+        background: $light-violet;
+        background-image: linear-gradient(50deg, $light-violet 30%, $light-magenta 100%);
+        border-radius: 0 0 560px 560px;
+        height: 100%;
+        width: 43%;
+    
+        @media only screen and (min-width: 1440px){
+            right: 70%;
+        }
+        @media only screen and (min-width: 320px) and (max-width: 1439px){
+            width: 84%;
+            top: -17%;
+            right: 50%;
+            height: 80%;
+        } 
+        
+    } 
 }
 
 main {
-    position: relative;
     @media only screen and (min-width: 320px){
         display: block;
-        &::before{
-            content: "";
-            position: absolute;
-            margin-top: -50px;
-            margin-left: -10px;
-            z-index: -100;
-            background: $light-violet;
-            background-image: linear-gradient(50deg, $light-violet 30%, $light-magenta 100%);
-            border-bottom-right-radius: 50%;
-            height: 50vh;
-            width: 50vw;
-        } 
-    }
+    } 
     @media only screen and (min-width: 1440px){
         display: flex;
-        &::before{
-            width: 40vw;
-        }
     }
 }
 .phone{
     border: 8px solid $white;
     border-radius: 30px;
-    margin: 10% auto;
-    width: 300px;
     position: relative;
     z-index: 5;
     background: $background;
+    overflow: hidden;
+    box-shadow: rgba(66, 66, 83, 0.25) 0px 10px 27px -5px;
+    @media only screen and (min-width: 320px){
+        margin: 10% auto;
+        width: 300px;
+    }
+    @media only screen and (min-width: 1440px){
+        margin: 3% 0% 3% 25%;
+    }
     &::before{
         content: '';
         background: $white;
@@ -78,10 +96,7 @@ main {
         align-items: center;
         justify-content: flex-start;
         position: relative;
-        border-top-left-radius: 23px;
-        border-top-right-radius: 23px;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+        border-radius: 23px 23px 10px 10px;
         background: $light-violet;
         background-image: linear-gradient(50deg, $light-violet 30%, $light-magenta 100%);
         padding: 20px 20px 5px 20px;
@@ -123,15 +138,15 @@ main {
     .phone-chat{
         .chat-left{
             max-width: 70%;
-            margin: 10px;
+            margin: 5px;
             color: $font-color-left;
-            
             p{
                 display: inline-block;
                 background: $msg-background;
                 border-radius: 20px 20px 20px 0;
                 padding: 10px;
                 font-size: $font-small;
+                margin: 5px;
             }
             .chat-option{
                 width: 90%;
@@ -163,12 +178,11 @@ main {
                 border-radius: 20px 20px 0px 20px;
                 font-size: $font-small;
                 padding: 10px;
-                // box-shadow: rgba(66, 66, 83, 0.25) 0px 10px 27px -5px;
+                margin: 5px;
                 filter: drop-shadow(5px 10px 5px #7474754f);
             }
             .chat-images{
                 display: flex;
-                
                 figure{
                     align-self: center;
                     margin: 5px;
@@ -181,10 +195,117 @@ main {
             }
         }
         .chat-input{
-            border-radius: 30px;
-            margin: 10px;
-            padding: 10px;
+            display: flex;
+            position: relative;
+            input{
+                border-radius: 30px;
+                padding: 10px;
+                width: 100%;
+                margin: 10px;
+                border: none;
+                &:focus{
+                    outline:none;
+                }
+            }
+            .send-btn{
+                border-radius: 50%;
+                height: 30px;
+                width: 30px;
+                top: calc(50% - 15px);
+                position: absolute;
+                right: 5%;
+                background: $button-back;
+                border: none;
+                &::after{
+                   content: '\276F'; 
+                   font-size: 20px;
+                   color: $white;
+                   font-weight: $font-weight-l;
+                   position: absolute;
+                   top: calc(50% - 15px);
+                   left: 10px;
+                }
+            }
         }
+        
     }
     
+}
+
+.side-text{
+    align-self: center;
+    padding: 0% 7%;
+    h3{
+        color: $font-main-head;
+        font-size: 30px;
+        animation: underline_anim 1s 10s forwards; 
+    }
+    p{
+        color: $font-para;
+    }
+    @media only screen and (min-width: 320px){
+        width: 100%;
+        text-align: center;
+        
+    }
+    @media only screen and (min-width: 1440px){
+        width: 45%;
+        text-align: left;
+    }
+}
+
+.loader{
+    font-size: 30px;
+    padding-left: 50px;
+    span{
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: $light-violet;
+        display: inline-block;
+        animation: loading 2s 5 forwards;
+    }
+    span:nth-of-type(1){
+        animation-delay: 400ms;
+    }
+    span:nth-child(2){
+        animation-delay: 900ms;
+    }
+    span:nth-child(3){
+        animation-delay: 1300ms;
+    }
+}
+@keyframes loading {
+    0% {
+    }
+  
+    50% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+  
+    
+}
+
+@keyframes popup{
+    0%{
+        opacity: 0;
+        transform: translateY(300%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes underline_anim{
+    0%{
+    }
+    100%{
+        text-decoration: underline;
+        text-decoration-color: $light-violet;
+        font-size: 40px;
+    }
 }
